@@ -7,7 +7,6 @@ register = template.Library()
 @register.inclusion_tag('tree_menu/menu.html', takes_context=True)
 def draw_menu(context, menu_name):
     request = context['request']
-    # current_url = resolve(request.path_info).url_name
     menu_items = Menu.objects.filter(menu_name=menu_name).select_related('parent')
 
     def build_menu_tree(items, parent=None):
